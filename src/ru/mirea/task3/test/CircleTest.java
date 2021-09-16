@@ -1,6 +1,6 @@
 package ru.mirea.task3.test;
 
-import com.pisarevdmitrii.entity.Circle;
+import ru.mirea.task3.entity.Circle;
 
 public class CircleTest {
 

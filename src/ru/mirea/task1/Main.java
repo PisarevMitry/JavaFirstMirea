@@ -1,6 +1,5 @@
 package ru.mirea.task1;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -42,7 +41,7 @@ public class Main {
 
         //Ex2
 
-        System.out.println( args.length);
+        System.out.println(args.length);
         for (String str : args) {
             System.out.println(str);
         }

@@ -1,7 +1,6 @@
 package ru.mirea.task4.test;
 
-import com.company.entity.Author;
-
+import ru.mirea.task4.entity.Author;
 
 public class TestAuthor {
     public static void test() {

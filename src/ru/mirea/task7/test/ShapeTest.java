@@ -1,9 +1,9 @@
 package ru.mirea.task7.test;
 
-import com.pisarevdmitrii.entity.Circle;
-import com.pisarevdmitrii.entity.Rectangle;
-import com.pisarevdmitrii.entity.Shape;
-import com.pisarevdmitrii.entity.Square;
+import ru.mirea.task7.entity.Circle;
+import ru.mirea.task7.entity.Rectangle;
+import ru.mirea.task7.entity.Shape;
+import ru.mirea.task7.entity.Square;
 
 public class ShapeTest {
 
