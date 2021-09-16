@@ -22,6 +22,35 @@ public class Human implements MethodsOfKill{
         this.availability = availability;
     }
 
+    @Override
+    public boolean isFracture() {
+        return false;
+    }
+
+    @Override
+    public void setFracture(boolean fracture) {
+
+    }
+
+    @Override
+    public boolean isSprain() {
+        return false;
+    }
+
+    @Override
+    public void setSprain(boolean sprain) {
+
+    }
+
+    @Override
+    public boolean isBurns() {
+        return false;
+    }
+
+    @Override
+    public void setBurns(boolean burns) {
+
+    }
 
 
 }

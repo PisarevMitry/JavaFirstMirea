@@ -1,6 +1,6 @@
 package ru.mirea.task4.test;
 
-import com.company.entity.Ball;
+import ru.mirea.task4.entity.Ball;
 
 public class TestBall {
     public static void test() {
