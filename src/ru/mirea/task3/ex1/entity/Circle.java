@@ -1,4 +1,4 @@
-package ru.mirea.task3.entity;
+package ru.mirea.task3.ex1.entity;
 
 public class Circle {
     private double radius;

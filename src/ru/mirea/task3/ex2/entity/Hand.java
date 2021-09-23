@@ -1,12 +1,12 @@
-package ru.mirea.task3.entity;
+package ru.mirea.task3.ex2.entity;
 
-public class Leg implements MethodsOfKill{
-    private boolean availability;
-    private boolean fracture;
-    private boolean sprain;
-    private boolean burns;
+public abstract class Hand {
+    protected boolean availability;
+    protected boolean fracture;
+    protected boolean sprain;
+    protected boolean burns;
 
-    public Leg() {
+    public Hand() {
         this.availability = true;
         this.fracture = false;
         this.sprain = false;
@@ -43,5 +43,15 @@ public class Leg implements MethodsOfKill{
 
     public void setBurns(boolean burns) {
         this.burns = burns;
+    }
+
+    @Override
+    public String toString() {
+        return "Hand{" +
+                "availability=" + availability +
+                ", fracture=" + fracture +
+                ", sprain=" + sprain +
+                ", burns=" + burns +
+                '}';
     }
 }
