@@ -1,9 +1,9 @@
-package ru.mirea.task3.entity;
+package ru.mirea.task3.ex2.entity;
 
-public class Head implements MethodsOfKill {
-    private boolean availability;
-    private boolean fracture;
-    private boolean burns;
+public abstract class Head {
+    protected boolean availability;
+    protected boolean fracture;
+    protected boolean burns;
 
     public Head() {
         this.availability = true;
@@ -27,19 +27,20 @@ public class Head implements MethodsOfKill {
         this.fracture = fracture;
     }
 
-    public boolean isSprain() {
-        return false;
-    }
-
-    public void setSprain(boolean sprain) {
-
-    }
-
     public boolean isBurns() {
         return burns;
     }
 
     public void setBurns(boolean burns) {
         this.burns = burns;
+    }
+
+    @Override
+    public String toString() {
+        return "Head{" +
+                "availability=" + availability +
+                ", fracture=" + fracture +
+                ", burns=" + burns +
+                '}';
     }
 }

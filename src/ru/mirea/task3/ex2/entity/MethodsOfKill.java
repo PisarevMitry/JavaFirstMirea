@@ -1,4 +1,4 @@
-package ru.mirea.task3.entity;
+package ru.mirea.task3.ex2.entity;
 
 public interface MethodsOfKill {
     public boolean isAvailability();
