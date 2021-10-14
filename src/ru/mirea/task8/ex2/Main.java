@@ -1,28 +1,28 @@
 package ru.mirea.task8.ex2;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-public class Main {
-    public static void main(String[] args) throws IOException {
-        JFrame frame = new JFrame();
-        BufferedImage image;
-        image = ImageIO.read(new File(args[0]));
-        JPanel panel = new JPanel() {
-            @Override
-            public Dimension getPreferredSize() {
-                return new Dimension(image.getWidth(), image.getHeight());
-            }
+public class Main extends JFrame {
+    public static final int WIDTH = 400;
+    public static final int HEIGHT = 400;
+    static Image image;
 
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.drawImage(image, 0, 0, this);
-            }
-        };
+    public Main() {
+        setSize(WIDTH, HEIGHT);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        String url = args[0];
+        System.out.println(url);
+        image = Toolkit.getDefaultToolkit().getImage(url);
+        new Main();
+    }
+
+    public void paint(Graphics g) {
+        super.paintComponents(g);
+        g.drawImage(image, 200, 200, this);
     }
 }
