@@ -19,21 +19,39 @@ public class StudentTest {
     }
 
     public void sortArray() {
-        Collections.sort(students);
+        int i, j;
+        double newValue;
+        Student newStudent;
+        for (i = 0; i < students.size(); i++) {
+            newValue = students.get(i).getAverageScore();
+            newStudent = students.get(i);
+            for (j = i - 1; j >= 0; j--) {
+                if (newValue < students.get(j).getAverageScore()) {
+                    students.set(j + 1, students.get(j));
+                } else {
+                    break;
+                }
+            }
+            students.set(j + 1, newStudent);
+        }
     }
 
     public void randomFillStudentList(int numberStudents) {
         Random random = new Random();
-        students = new ArrayList<>();
+        this.students = new ArrayList<>();
         for (int i = 0; i < numberStudents; i++) {
             Student student = new Student(UUID.randomUUID().toString(), random.nextInt(100), random.nextInt(100));
-            students.add(student);
+            this.students.add(student);
         }
     }
 
     public void printStudentList() {
-        for (Student i : students) {
+        for (Student i : this.students) {
             System.out.println(i);
         }
+    }
+
+    public static void main(String[] args) {
+        StudentTest studentTest = new StudentTest();
     }
 }

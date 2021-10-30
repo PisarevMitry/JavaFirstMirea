@@ -4,6 +4,7 @@ import ru.mirea.task12.ex2.entity.SortingStudentsByGPA;
 import ru.mirea.task12.ex2.entity.Student;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.UUID;
 
@@ -19,7 +20,7 @@ public class StudentTest {
     }
 
     public void sortArray() {
-        SortingStudentsByGPA.quickSort(students, 0, students.size() - 1);
+        Collections.sort(students, new SortingStudentsByGPA());//Сортировка коллекций использует алгоритм усовершенствованной быстрой сортировки по умолчанию
     }
 
     public void randomFillStudentList(int numberStudents) {
@@ -35,5 +36,9 @@ public class StudentTest {
         for (Student i : students) {
             System.out.println(i);
         }
+    }
+
+    public static void main(String[] args) {
+        StudentTest studentTest = new StudentTest();
     }
 }
