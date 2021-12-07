@@ -7,21 +7,23 @@ public class Patient {
     private String surname;
     private String name;
     private String patronymic;
+    private String password;
 
     public Patient() {
     }
 
-    public Patient(String surname, String name) {
+    public Patient(String surname, String name, String password) {
         this.surname = surname;
         this.name = name;
+        this.password = password;
     }
 
-    public Patient(String surname, String name, String patronymic) {
+    public Patient(String surname, String name, String patronymic, String password) {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
+        this.password = password;
     }
-
 
     public int getPatientId() {
         return patientId;
@@ -55,6 +57,14 @@ public class Patient {
         this.patronymic = patronymic;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -77,5 +87,4 @@ public class Patient {
                 ", patronymic='" + patronymic + '\'' +
                 '}';
     }
-
 }

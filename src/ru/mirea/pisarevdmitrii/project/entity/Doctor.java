@@ -7,21 +7,30 @@ public class Doctor {
     private String surname;
     private String name;
     private String patronymic;
+    private String password;
     private MedicalSpecialization medicalSpecialization;
 
     public Doctor() {
     }
 
-    public Doctor(String surname, String name, String patronymic) {
+    public Doctor(String surname, String name, String password) {
         this.surname = surname;
         this.name = name;
-        this.patronymic = patronymic;
+        this.password = password;
     }
 
-    public Doctor(String surname, String name, String patronymic, MedicalSpecialization medicalSpecialization) {
+    public Doctor(String surname, String name, String patronymic, String password) {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
+        this.password = password;
+    }
+
+    public Doctor(String surname, String name, String patronymic, String password, MedicalSpecialization medicalSpecialization) {
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = patronymic;
+        this.password = password;
         this.medicalSpecialization = medicalSpecialization;
     }
 
@@ -63,6 +72,14 @@ public class Doctor {
 
     public void setMedicalSpecialization(MedicalSpecialization medicalSpecialization) {
         this.medicalSpecialization = medicalSpecialization;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

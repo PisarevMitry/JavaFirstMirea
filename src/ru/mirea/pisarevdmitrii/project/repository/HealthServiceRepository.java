@@ -7,7 +7,6 @@ import ru.mirea.pisarevdmitrii.project.entity.MedicalSpecialization;
 public class HealthServiceRepository extends DatabaseTable<HealthService> {
     public HealthServiceRepository(String tableName) {
         super(tableName);
-        initialization();
     }
 
     @Override

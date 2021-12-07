@@ -15,7 +15,6 @@ public class Database {
     public Database(String databaseName) {
         this.databaseName = databaseName;
         this.databaseTables = new ArrayList<>();
-        initialization();
     }
 
     public Database() {

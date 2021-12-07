@@ -2,21 +2,22 @@ package ru.mirea.pisarevdmitrii.project;
 
 import ru.mirea.pisarevdmitrii.project.entity.*;
 import ru.mirea.pisarevdmitrii.project.entity.core.DateAndTime;
+import ru.mirea.pisarevdmitrii.project.service.applicationService.LoginService;
 import ru.mirea.pisarevdmitrii.project.service.paymentService.PayByCreditCard;
 import ru.mirea.pisarevdmitrii.project.service.paymentService.PayByPayPal;
 import ru.mirea.pisarevdmitrii.project.service.paymentService.PayStrategy;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
 public class Application {
-    private static ApplicationInitializer applicationInitializer;
-    private static Patient patient = null;
-    private static Doctor doctor = null;
-    private static Patient admin = null;
+    public static ApplicationInitializer applicationInitializer;
+    public static Patient patient = null;
+    public static Doctor doctor = null;
+    public static Patient admin = null;
     private static final Scanner scanner = new Scanner(System.in);
+    private final static LoginService loginService = new LoginService();
 
     public static void Start() {
         applicationInitializer = new ApplicationInitializer();
@@ -24,6 +25,11 @@ public class Application {
 
     public static void main(String[] args) {
         Start();
+
+        /*
+        Блок регистрации и авторизации
+         */
+
         System.out.println("""
                 Выберите действие:
                 1 - Авторизация;
@@ -34,47 +40,47 @@ public class Application {
                 String surname;
                 String name;
                 String patronymic;
+                String password;
                 System.out.println("Введите фамилию: ");
                 surname = scanner.next();
                 System.out.println("Введите имя: ");
                 name = scanner.next();
-                System.out.println("Введите отчество: ");
+                System.out.println("Введите отчество или null, если нет отчества: ");
                 patronymic = scanner.next();
-                try {
-                    patient = applicationInitializer.getDatabaseConfig().getPatientController().getPatient(new Patient(surname, name, patronymic));
-                    doctor = applicationInitializer.getDatabaseConfig().getDoctorController().getDoctor(new Doctor(surname, name, patronymic));
-                    if (Objects.equals(surname, "admin"))
-                        admin = new Patient();
-                    if (patient == null && doctor == null && admin == null) {
-                        System.out.println("Данный пользователь не найден, создайте пользователя.");
-                        throw new Exception("not found entity");
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if (patronymic.equals("null")) {
+                    patronymic = null;
                 }
+                System.out.println("Введите пароль: ");
+                password = scanner.next();
+                loginService.authorization(surname, name, patronymic, password);
             }
             case 2 -> {
                 String surname;
                 String name;
                 String patronymic;
+                String password;
+                String token;
                 System.out.println("Введите фамилию: ");
                 surname = scanner.next();
                 System.out.println("Введите имя: ");
                 name = scanner.next();
-                System.out.println("Введите отчество: ");
+                System.out.println("Введите отчество или null, если нет отчества: ");
                 patronymic = scanner.next();
-                try {
-                    applicationInitializer.getDatabaseConfig().getPatientController().postPatient(new Patient(surname, name, patronymic));
-                    patient = applicationInitializer.getDatabaseConfig().getPatientController().getPatient(new Patient(surname, name, patronymic));
-                    if (patient == null) {
-                        System.out.println("Пользователь не создан, проверьте правильность введенных данных.");
-                        throw new Exception("can't create entity");
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if (patronymic.equals("null")) {
+                    patronymic = null;
                 }
+                System.out.println("Введите пароль: ");
+                password = scanner.next();
+                System.out.println("Введите токен регистрации (для обычного пользователя PATIENT: ");
+                token = scanner.next();
+                loginService.registration(surname, name, patronymic, password, token);
             }
         }
+
+        /*
+        Блок пользователя
+         */
+
         while (patient != null) {
             System.out.println("""
                     Выберите действие:
@@ -128,17 +134,15 @@ public class Application {
                             2 - PayPal;
                             """);
                     switch (scanner.nextInt()) {
-                        case 1:
+                        case 1 -> {
                             payStrategy = new PayByCreditCard();
-                        case 2:
+                        }
+                        case 2 -> {
                             payStrategy = new PayByPayPal();
-                            break;
-                        default:
-                            throw new IllegalStateException("Unexpected value: " + scanner.nextInt());
+                        }
+                        default -> throw new IllegalStateException("Unexpected value: " + scanner.nextInt());
                     }
-
                     appointment.processOrder(payStrategy);
-                    applicationInitializer.getDatabaseConfig().getAppointmentController().postAppointment(new Appointment(appointmentDate, appointmentDoctor, appointmentHealthService, appointmentCabinet, appointmentPatient));
                 }
                 case 2 -> {
 
@@ -153,6 +157,7 @@ public class Application {
                 }
             }
         }
+        admin = patient;
         while (admin != null) {
             System.out.println("""
                     Выберите действие:
@@ -205,5 +210,37 @@ public class Application {
                 }
             }
         }
+    }
+
+    public static ApplicationInitializer getApplicationInitializer() {
+        return applicationInitializer;
+    }
+
+    public static void setApplicationInitializer(ApplicationInitializer applicationInitializer) {
+        Application.applicationInitializer = applicationInitializer;
+    }
+
+    public static Patient getPatient() {
+        return patient;
+    }
+
+    public static void setPatient(Patient patient) {
+        Application.patient = patient;
+    }
+
+    public static Doctor getDoctor() {
+        return doctor;
+    }
+
+    public static void setDoctor(Doctor doctor) {
+        Application.doctor = doctor;
+    }
+
+    public static Patient getAdmin() {
+        return admin;
+    }
+
+    public static void setAdmin(Patient admin) {
+        Application.admin = admin;
     }
 }

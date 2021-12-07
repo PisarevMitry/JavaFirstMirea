@@ -6,17 +6,6 @@ public class HealthService {
     private Integer healthServiceId;
     private String title;
     private int price;
-
-    @Override
-    public String toString() {
-        return "HealthService{" +
-                "healthServiceId=" + healthServiceId +
-                ", title='" + title + '\'' +
-                ", price=" + price +
-                ", medicalSpecialization=" + medicalSpecialization +
-                '}';
-    }
-
     private MedicalSpecialization medicalSpecialization;
 
     public HealthService() {
@@ -72,4 +61,15 @@ public class HealthService {
     public int hashCode() {
         return Objects.hash(title, price, medicalSpecialization);
     }
+
+    @Override
+    public String toString() {
+        return "HealthService{" +
+                "healthServiceId=" + healthServiceId +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                ", medicalSpecialization=" + medicalSpecialization +
+                '}';
+    }
+
 }

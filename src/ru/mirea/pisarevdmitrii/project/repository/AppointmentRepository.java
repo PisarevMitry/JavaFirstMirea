@@ -6,7 +6,6 @@ import ru.mirea.pisarevdmitrii.project.entity.Appointment;
 public class AppointmentRepository extends DatabaseTable<Appointment> {
     public AppointmentRepository(String tableName) {
         super(tableName);
-        initialization();
     }
 
     @Override
