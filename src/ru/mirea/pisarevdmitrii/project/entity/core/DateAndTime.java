@@ -9,11 +9,23 @@ import java.util.GregorianCalendar;
 public class DateAndTime {
     Calendar calendar;
 
+    public DateAndTime() {
+        calendar = new GregorianCalendar();
+    }
+
     public DateAndTime(int year, int month, int day, int hour, int minute) {
         calendar = new GregorianCalendar();
 
         calendar.set(Calendar.YEAR, year);
         calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DAY_OF_MONTH, day);
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+    }
+
+    public DateAndTime(int day, int hour, int minute) {
+        calendar = new GregorianCalendar();
+
         calendar.set(Calendar.DAY_OF_MONTH, day);
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minute);

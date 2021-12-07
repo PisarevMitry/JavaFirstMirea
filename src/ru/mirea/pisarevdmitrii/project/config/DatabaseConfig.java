@@ -3,7 +3,7 @@ package ru.mirea.pisarevdmitrii.project.config;
 import ru.mirea.pisarevdmitrii.project.controller.*;
 import ru.mirea.pisarevdmitrii.project.core.db.Database;
 import ru.mirea.pisarevdmitrii.project.repository.*;
-import ru.mirea.pisarevdmitrii.project.service.*;
+import ru.mirea.pisarevdmitrii.project.service.JPAservice.*;
 
 public class DatabaseConfig {
 

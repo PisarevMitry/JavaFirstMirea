@@ -3,7 +3,7 @@ package ru.mirea.pisarevdmitrii.project.controller;
 
 import ru.mirea.pisarevdmitrii.project.entity.Doctor;
 import ru.mirea.pisarevdmitrii.project.entity.MedicalSpecialization;
-import ru.mirea.pisarevdmitrii.project.service.DoctorService;
+import ru.mirea.pisarevdmitrii.project.service.JPAservice.DoctorService;
 
 import java.util.ArrayList;
 

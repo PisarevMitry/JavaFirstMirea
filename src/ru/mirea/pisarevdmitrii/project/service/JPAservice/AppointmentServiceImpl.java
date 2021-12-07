@@ -1,4 +1,4 @@
-package ru.mirea.pisarevdmitrii.project.service;
+package ru.mirea.pisarevdmitrii.project.service.JPAservice;
 
 import ru.mirea.pisarevdmitrii.project.core.db.DatabaseTable;
 import ru.mirea.pisarevdmitrii.project.entity.Appointment;

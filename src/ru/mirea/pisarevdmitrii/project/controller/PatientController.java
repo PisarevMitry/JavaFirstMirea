@@ -1,7 +1,7 @@
 package ru.mirea.pisarevdmitrii.project.controller;
 
 import ru.mirea.pisarevdmitrii.project.entity.Patient;
-import ru.mirea.pisarevdmitrii.project.service.PatientService;
+import ru.mirea.pisarevdmitrii.project.service.JPAservice.PatientService;
 
 import java.util.ArrayList;
 

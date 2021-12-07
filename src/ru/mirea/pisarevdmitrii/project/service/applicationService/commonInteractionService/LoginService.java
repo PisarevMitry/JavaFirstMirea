@@ -1,12 +1,12 @@
-package ru.mirea.pisarevdmitrii.project.service.applicationService;
+package ru.mirea.pisarevdmitrii.project.service.applicationService.commonInteractionService;
 
-import ru.mirea.pisarevdmitrii.project.Application;
+import ru.mirea.pisarevdmitrii.project.ConsoleApplication;
 import ru.mirea.pisarevdmitrii.project.entity.Doctor;
 import ru.mirea.pisarevdmitrii.project.entity.Patient;
 
 public class LoginService {
 
-    public void authorization(String surname, String name, String patronymic, String password) {
+    protected static void authorization(String surname, String name, String patronymic, String password) {
         try {
             if (patronymic != null) {
                 authorizationPatient(surname, name, patronymic, password);
@@ -17,7 +17,7 @@ public class LoginService {
                 authorizationDoctor(surname, name, password);
                 authorizationAdmin(surname, name, password);
             }
-            if (Application.getPatient() == null && Application.getDoctor() == null && Application.getAdmin() == null) {
+            if (ConsoleApplication.getPatient() == null && ConsoleApplication.getDoctor() == null && ConsoleApplication.getAdmin() == null) {
                 throw new Exception("not found User");
             }
         } catch (Exception e) {
@@ -25,10 +25,10 @@ public class LoginService {
         }
     }
 
-    protected void authorizationPatient(String surname, String name, String patronymic, String password) {
+    protected static void authorizationPatient(String surname, String name, String patronymic, String password) {
         try {
-            Application.setPatient(Application.getApplicationInitializer().getDatabaseConfig().getPatientController().getPatient(new Patient(surname, name, patronymic, password)));
-            if (Application.getPatient() == null) {
+            ConsoleApplication.setPatient(ConsoleApplication.getApplicationInitializer().getDatabaseConfig().getPatientController().getPatient(new Patient(surname, name, patronymic, password)));
+            if (ConsoleApplication.getPatient() == null) {
                 throw new Exception("not found Patient");
             }
         } catch (Exception e) {
@@ -36,10 +36,10 @@ public class LoginService {
         }
     }
 
-    protected void authorizationPatient(String surname, String name, String password) {
+    protected static void authorizationPatient(String surname, String name, String password) {
         try {
-            Application.setPatient(Application.getApplicationInitializer().getDatabaseConfig().getPatientController().getPatient(new Patient(surname, name, password)));
-            if (Application.getPatient() == null) {
+            ConsoleApplication.setPatient(ConsoleApplication.getApplicationInitializer().getDatabaseConfig().getPatientController().getPatient(new Patient(surname, name, password)));
+            if (ConsoleApplication.getPatient() == null) {
                 throw new Exception("not found Patient");
             }
         } catch (Exception e) {
@@ -47,10 +47,10 @@ public class LoginService {
         }
     }
 
-    protected void authorizationDoctor(String surname, String name, String patronymic, String password) {
+    protected static void authorizationDoctor(String surname, String name, String patronymic, String password) {
         try {
-            Application.setDoctor(Application.getApplicationInitializer().getDatabaseConfig().getDoctorController().getDoctor(new Doctor(surname, name, patronymic, password)));
-            if (Application.getDoctor() == null) {
+            ConsoleApplication.setDoctor(ConsoleApplication.getApplicationInitializer().getDatabaseConfig().getDoctorController().getDoctor(new Doctor(surname, name, patronymic, password)));
+            if (ConsoleApplication.getDoctor() == null) {
                 throw new Exception("not found Doctor");
             }
         } catch (Exception e) {
@@ -58,10 +58,10 @@ public class LoginService {
         }
     }
 
-    protected void authorizationDoctor(String surname, String name, String password) {
+    protected static void authorizationDoctor(String surname, String name, String password) {
         try {
-            Application.setDoctor(Application.getApplicationInitializer().getDatabaseConfig().getDoctorController().getDoctor(new Doctor(surname, name, password)));
-            if (Application.getDoctor() == null) {
+            ConsoleApplication.setDoctor(ConsoleApplication.getApplicationInitializer().getDatabaseConfig().getDoctorController().getDoctor(new Doctor(surname, name, password)));
+            if (ConsoleApplication.getDoctor() == null) {
                 throw new Exception("not found Doctor");
             }
         } catch (Exception e) {
@@ -69,19 +69,19 @@ public class LoginService {
         }
     }
 
-    protected void authorizationAdmin(String surname, String name, String patronymic, String password) {
+    protected static void authorizationAdmin(String surname, String name, String patronymic, String password) {
         if (surname.equals("admin") && password.equals("admin")) {
-            Application.setAdmin(new Patient());
+            ConsoleApplication.setAdmin(new Patient());
         }
     }
 
-    protected void authorizationAdmin(String surname, String name, String password) {
+    protected static void authorizationAdmin(String surname, String name, String password) {
         if (surname.equals("admin") && password.equals("admin")) {
-            Application.setAdmin(new Patient());
+            ConsoleApplication.setAdmin(new Patient());
         }
     }
 
-    public void registration(String surname, String name, String patronymic, String password, String token) {
+    protected static void registration(String surname, String name, String patronymic, String password, String token) {
         try {
             if (patronymic != null) {
                 switch (token) {
@@ -111,7 +111,7 @@ public class LoginService {
                 }
             }
             authorization(surname, name, patronymic, password);
-            if (Application.getPatient() == null && Application.getDoctor() == null && Application.getAdmin() == null) {
+            if (ConsoleApplication.getPatient() == null && ConsoleApplication.getDoctor() == null && ConsoleApplication.getAdmin() == null) {
                 throw new Exception("database error");
             }
         } catch (Exception e) {
@@ -119,23 +119,23 @@ public class LoginService {
         }
     }
 
-    protected void registrationPatient(String surname, String name, String patronymic, String password) {
-        Application.getApplicationInitializer().getDatabaseConfig().getPatientController().postPatient(new Patient(surname, name, patronymic, password));
+    protected static void registrationPatient(String surname, String name, String patronymic, String password) {
+        ConsoleApplication.getApplicationInitializer().getDatabaseConfig().getPatientController().postPatient(new Patient(surname, name, patronymic, password));
     }
 
-    protected void registrationPatient(String surname, String name, String password) {
-        Application.getApplicationInitializer().getDatabaseConfig().getPatientController().postPatient(new Patient(surname, name, password));
+    protected static void registrationPatient(String surname, String name, String password) {
+        ConsoleApplication.getApplicationInitializer().getDatabaseConfig().getPatientController().postPatient(new Patient(surname, name, password));
     }
 
-    protected void registrationDoctor(String surname, String name, String patronymic, String password) {
-        Application.getApplicationInitializer().getDatabaseConfig().getDoctorController().postDoctor(new Doctor(surname, name, patronymic, password));
+    protected static void registrationDoctor(String surname, String name, String patronymic, String password) {
+        ConsoleApplication.getApplicationInitializer().getDatabaseConfig().getDoctorController().postDoctor(new Doctor(surname, name, patronymic, password));
     }
 
-    protected void registrationDoctor(String surname, String name, String password) {
-        Application.getApplicationInitializer().getDatabaseConfig().getDoctorController().postDoctor(new Doctor(surname, name, password));
+    protected static void registrationDoctor(String surname, String name, String password) {
+        ConsoleApplication.getApplicationInitializer().getDatabaseConfig().getDoctorController().postDoctor(new Doctor(surname, name, password));
     }
 
-    protected void registrationAdmin(String surname, String name, String patronymic, String password) {
+    protected static void registrationAdmin(String surname, String name, String patronymic, String password) {
         //добавить таблицу базы данных
        /* try {
             Application.getApplicationInitializer().getDatabaseConfig().getAdminController().postAdmin(new Admin(surname, name, patronymic, password));
@@ -148,7 +148,7 @@ public class LoginService {
         }*/
     }
 
-    protected void registrationAdmin(String surname, String name, String password) {
+    protected static void registrationAdmin(String surname, String name, String password) {
         /* try {
             Application.getApplicationInitializer().getDatabaseConfig().getAdminController().postAdmin(new Admin(surname, name, password));
             Application.setPatient(Application.getApplicationInitializer().getDatabaseConfig().getAdminController().getAdmin(new Admin(surname, name, password));
