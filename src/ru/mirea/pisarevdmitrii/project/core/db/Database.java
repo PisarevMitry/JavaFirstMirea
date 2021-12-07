@@ -3,8 +3,8 @@ package ru.mirea.pisarevdmitrii.project.core.db;
 import java.util.ArrayList;
 
 public class Database {
-    private String databaseName;
-    private ArrayList<DatabaseTable> databaseTables;
+    protected String databaseName;
+    protected ArrayList<DatabaseTable> databaseTables;
 
     public Database(String databaseName, ArrayList<DatabaseTable> databaseTables) {
         this.databaseName = databaseName;
@@ -15,6 +15,7 @@ public class Database {
     public Database(String databaseName) {
         this.databaseName = databaseName;
         this.databaseTables = new ArrayList<>();
+        initialization();
     }
 
     public Database() {

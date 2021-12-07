@@ -1,16 +1,28 @@
 package ru.mirea.pisarevdmitrii.project.entity;
 
+import java.util.Objects;
+
 public class HealthService {
-    private long healthServiceId;
+    private Integer healthServiceId;
     private String title;
     private int price;
+
+    @Override
+    public String toString() {
+        return "HealthService{" +
+                "healthServiceId=" + healthServiceId +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                ", medicalSpecialization=" + medicalSpecialization +
+                '}';
+    }
+
     private MedicalSpecialization medicalSpecialization;
 
     public HealthService() {
     }
 
-    public HealthService(long healthServiceId, String title, int price, MedicalSpecialization medicalSpecialization) {
-        this.healthServiceId = healthServiceId;
+    public HealthService(String title, int price, MedicalSpecialization medicalSpecialization) {
         this.title = title;
         this.price = price;
         this.medicalSpecialization = medicalSpecialization;
@@ -20,7 +32,7 @@ public class HealthService {
         return healthServiceId;
     }
 
-    public void setHealthServiceId(long healthServiceId) {
+    public void setHealthServiceId(Integer healthServiceId) {
         this.healthServiceId = healthServiceId;
     }
 
@@ -46,5 +58,18 @@ public class HealthService {
 
     public void setMedicalSpecialization(MedicalSpecialization medicalSpecialization) {
         this.medicalSpecialization = medicalSpecialization;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HealthService that = (HealthService) o;
+        return price == that.price && Objects.equals(title, that.title) && medicalSpecialization == that.medicalSpecialization;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, price, medicalSpecialization);
     }
 }

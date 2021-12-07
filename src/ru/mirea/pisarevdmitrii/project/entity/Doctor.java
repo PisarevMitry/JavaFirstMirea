@@ -18,6 +18,12 @@ public class Doctor {
         this.patronymic = patronymic;
     }
 
+    public Doctor(String surname, String name, String patronymic, MedicalSpecialization medicalSpecialization) {
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = patronymic;
+        this.medicalSpecialization = medicalSpecialization;
+    }
 
     public long getDoctorId() {
         return doctorId;

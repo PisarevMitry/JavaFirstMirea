@@ -1,5 +1,6 @@
 package ru.mirea.pisarevdmitrii.project.controller;
 
+import org.jetbrains.annotations.NotNull;
 import ru.mirea.pisarevdmitrii.project.entity.MedicalBook;
 import ru.mirea.pisarevdmitrii.project.entity.Patient;
 
@@ -14,7 +15,7 @@ enum AccessType {
 public class MedicalBookAccessControllerFactory {
     public MedicalBook medicalBook;
 
-    public MedicalBook createFactory(MedicalBook medicalBook, AccessType type) {
+    public MedicalBook createFactory(MedicalBook medicalBook, @NotNull AccessType type) {
         this.medicalBook = medicalBook;
         switch (type) {
             case ReadAccess:

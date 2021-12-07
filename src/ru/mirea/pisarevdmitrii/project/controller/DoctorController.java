@@ -2,6 +2,7 @@ package ru.mirea.pisarevdmitrii.project.controller;
 
 
 import ru.mirea.pisarevdmitrii.project.entity.Doctor;
+import ru.mirea.pisarevdmitrii.project.entity.MedicalSpecialization;
 import ru.mirea.pisarevdmitrii.project.service.DoctorService;
 
 import java.util.ArrayList;
@@ -36,4 +37,17 @@ public class DoctorController {
     public void updateDoctor(Doctor doctor, Doctor doctorNew) {
         doctorService.updateDoctor(doctor, doctorNew);
     }
+
+    public ArrayList<Doctor> getAllDoctorByMedicalSpecialization(MedicalSpecialization medicalSpecialization) {
+        ArrayList<Doctor> doctors = doctorService.getAllDoctor();
+        for (int i = 0; i < doctors.size(); i++) {
+            if (doctors.get(i).getMedicalSpecialization() != medicalSpecialization) {
+                doctors.remove(i);
+            }
+        }
+        return doctors;
+
+    }
+
+
 }

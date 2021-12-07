@@ -6,14 +6,15 @@ import java.util.Objects;
 
 public class DatabaseTable<V> {
 
-    private String tableName;
-    private HashMap<Integer, V> entity;
-    private int index;
+    protected String tableName;
+    protected HashMap<Integer, V> entity;
+    protected int index;
 
     public DatabaseTable(String tableName) {
         this.tableName = tableName;
         this.entity = new HashMap<Integer, V>();
         index = 0;
+        initialization();
     }
 
     public DatabaseTable(String tableName, HashMap<Integer, V> entity) {
@@ -68,6 +69,5 @@ public class DatabaseTable<V> {
     }
 
     public void initialization() {
-
     }
 }

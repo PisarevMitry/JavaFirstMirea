@@ -2,8 +2,7 @@ package ru.mirea.pisarevdmitrii.project.config;
 
 import ru.mirea.pisarevdmitrii.project.controller.*;
 import ru.mirea.pisarevdmitrii.project.core.db.Database;
-import ru.mirea.pisarevdmitrii.project.core.db.DatabaseTable;
-import ru.mirea.pisarevdmitrii.project.entity.*;
+import ru.mirea.pisarevdmitrii.project.repository.*;
 import ru.mirea.pisarevdmitrii.project.service.*;
 
 public class DatabaseConfig {
@@ -17,11 +16,11 @@ public class DatabaseConfig {
 
     public DatabaseConfig() {
         database = new Database("medical_application");
-        database.addDatabaseTables(new DatabaseTable<Appointment>("appointment"));
-        database.addDatabaseTables(new DatabaseTable<Doctor>("doctor"));
-        database.addDatabaseTables(new DatabaseTable<Patient>("patient"));
-        database.addDatabaseTables(new DatabaseTable<MedicalBook>("medical_book"));
-        database.addDatabaseTables(new DatabaseTable<HealthService>("health_service"));
+        database.addDatabaseTables(new AppointmentRepository("appointment"));
+        database.addDatabaseTables(new DoctorRepository("doctor"));
+        database.addDatabaseTables(new PatientRepository("patient"));
+        database.addDatabaseTables(new MedicalBookRepository("medical_book"));
+        database.addDatabaseTables(new HealthServiceRepository("health_service"));
 
         appointmentController = new AppointmentController(new AppointmentServiceImpl(database.searchDatabaseTable("appointment")));
         doctorController = new DoctorController(new DoctorServiceImpl(database.searchDatabaseTable("doctor")));

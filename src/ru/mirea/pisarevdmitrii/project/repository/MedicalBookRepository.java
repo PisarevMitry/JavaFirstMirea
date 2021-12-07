@@ -6,5 +6,10 @@ import ru.mirea.pisarevdmitrii.project.entity.MedicalBook;
 public class MedicalBookRepository extends DatabaseTable<MedicalBook> {
     public MedicalBookRepository(String tableName) {
         super(tableName);
+        initialization();
+    }
+
+    @Override
+    public void initialization() {
     }
 }

@@ -6,7 +6,7 @@ import ru.mirea.pisarevdmitrii.project.service.HealthServiceService;
 import java.util.ArrayList;
 
 public class HealthServiceController {
-    private HealthServiceService healthServiceService;
+    private final HealthServiceService healthServiceService;
 
     public HealthServiceController(HealthServiceService healthServiceService) {
         this.healthServiceService = healthServiceService;

@@ -1,6 +1,6 @@
 package ru.mirea.pisarevdmitrii.project.entity;
 
-enum MedicalQualificationCategory {
+public enum MedicalQualificationCategory {
     none,
     second,
     first,
