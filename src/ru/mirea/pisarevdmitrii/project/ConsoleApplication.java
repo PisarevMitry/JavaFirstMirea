@@ -24,12 +24,12 @@ public class ConsoleApplication {
         Start();
 
         /**
-        Блок регистрации и авторизации
+         Блок регистрации и авторизации
          **/
         consoleLoginService.login();
 
         /**
-        Блок пользователя
+         Блок пользователя
          **/
 
         while (patient != null) {
@@ -43,7 +43,7 @@ public class ConsoleApplication {
                     """);
             switch (scanner.nextInt()) {
                 case 1 -> {
-                    consolePatientInteractionService.signupAppointmentConsole();
+                    consolePatientInteractionService.signupAppointment();
                 }
                 case 2 -> {
 

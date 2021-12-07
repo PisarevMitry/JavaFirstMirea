@@ -3,12 +3,14 @@ package ru.mirea.pisarevdmitrii.project.entity;
 import java.util.Objects;
 
 public class Doctor {
-    private long doctorId;
+
+    private Integer doctorId;
     private String surname;
     private String name;
     private String patronymic;
     private String password;
     private MedicalSpecialization medicalSpecialization;
+    private MedicalQualificationCategory medicalQualificationCategory;
 
     public Doctor() {
     }
@@ -38,7 +40,7 @@ public class Doctor {
         return doctorId;
     }
 
-    public void setDoctorId(long doctorId) {
+    public void setDoctorId(Integer doctorId) {
         this.doctorId = doctorId;
     }
 
@@ -66,6 +68,14 @@ public class Doctor {
         this.patronymic = patronymic;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public MedicalSpecialization getMedicalSpecialization() {
         return medicalSpecialization;
     }
@@ -74,12 +84,12 @@ public class Doctor {
         this.medicalSpecialization = medicalSpecialization;
     }
 
-    public String getPassword() {
-        return password;
+    public MedicalQualificationCategory getMedicalQualificationCategory() {
+        return medicalQualificationCategory;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMedicalQualificationCategory(MedicalQualificationCategory medicalQualificationCategory) {
+        this.medicalQualificationCategory = medicalQualificationCategory;
     }
 
     @Override

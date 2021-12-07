@@ -7,14 +7,14 @@ import ru.mirea.pisarevdmitrii.project.service.paymentService.PayStrategy;
 import java.util.Objects;
 
 public class Appointment {
-    private long appointmentId;
+    private Integer appointmentId;
     private DateAndTime date;
     private Doctor doctor;
     private HealthService healthService;
     private String cabinet;
+    private MedicalInstitutionAddress medicalInstitutionAddress;
     private Patient patient;
     private boolean visited;
-
     private boolean payment;
 
     public Appointment() {
@@ -40,7 +40,7 @@ public class Appointment {
         return appointmentId;
     }
 
-    public void setAppointmentId(long appointmentId) {
+    public void setAppointmentId(Integer appointmentId) {
         this.appointmentId = appointmentId;
     }
 
@@ -74,6 +74,14 @@ public class Appointment {
 
     public void setCabinet(String cabinet) {
         this.cabinet = cabinet;
+    }
+
+    public MedicalInstitutionAddress getMedicalInstitutionAddress() {
+        return medicalInstitutionAddress;
+    }
+
+    public void setMedicalInstitutionAddress(MedicalInstitutionAddress medicalInstitutionAddress) {
+        this.medicalInstitutionAddress = medicalInstitutionAddress;
     }
 
     public Patient getPatient() {
@@ -126,4 +134,6 @@ public class Appointment {
                 ", payment=" + payment +
                 '}';
     }
+
+
 }

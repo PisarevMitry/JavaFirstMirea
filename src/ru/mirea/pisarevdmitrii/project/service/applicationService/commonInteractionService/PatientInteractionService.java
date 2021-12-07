@@ -30,7 +30,7 @@ public class PatientInteractionService {
 //ToDo вынести логику оплаты
     }
 
-    public void signupAppointmentConsole() {
+    public void signupAppointment() {
 
     }
 

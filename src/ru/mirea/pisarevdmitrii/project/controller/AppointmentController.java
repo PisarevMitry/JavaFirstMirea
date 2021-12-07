@@ -61,6 +61,17 @@ public class AppointmentController {
         return appointments;
     }
 
+    public ArrayList<Appointment> getAllAppointmentBy(Doctor doctor) {
+        ArrayList<Appointment> appointments = appointmentService.getAllAppointment();
+        for (int i = 0; i < appointments.size(); i++) {
+            if (!appointments.get(i).getDoctor().equals(doctor)) {
+                appointments.remove(i);
+            }
+        }
+        return appointments;
+    }
+
+
     public ArrayList<Appointment> getAllAppointmentByDoctorTime(Doctor doctor, DateAndTime dateAndTime) {
         ArrayList<Appointment> appointments = appointmentService.getAllAppointment();
         for (int i = 0; i < appointments.size(); i++) {

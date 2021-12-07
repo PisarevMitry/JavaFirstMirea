@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class ConsolePatientInteractionService extends PatientInteractionService {
 
     @Override
-    public void signupAppointmentConsole() {
+    public void signupAppointment() {
         Scanner scanner = new Scanner(System.in);
 
         DateAndTime appointmentDate;

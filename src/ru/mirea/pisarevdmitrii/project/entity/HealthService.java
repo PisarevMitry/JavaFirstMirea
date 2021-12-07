@@ -3,10 +3,12 @@ package ru.mirea.pisarevdmitrii.project.entity;
 import java.util.Objects;
 
 public class HealthService {
+
     private Integer healthServiceId;
     private String title;
     private int price;
     private MedicalSpecialization medicalSpecialization;
+    private MedicalQualificationCategory medicalQualificationCategory;
 
     public HealthService() {
     }
@@ -17,7 +19,7 @@ public class HealthService {
         this.medicalSpecialization = medicalSpecialization;
     }
 
-    public long getHealthServiceId() {
+    public Integer getHealthServiceId() {
         return healthServiceId;
     }
 
@@ -47,6 +49,14 @@ public class HealthService {
 
     public void setMedicalSpecialization(MedicalSpecialization medicalSpecialization) {
         this.medicalSpecialization = medicalSpecialization;
+    }
+
+    public MedicalQualificationCategory getMedicalQualificationCategory() {
+        return medicalQualificationCategory;
+    }
+
+    public void setMedicalQualificationCategory(MedicalQualificationCategory medicalQualificationCategory) {
+        this.medicalQualificationCategory = medicalQualificationCategory;
     }
 
     @Override
