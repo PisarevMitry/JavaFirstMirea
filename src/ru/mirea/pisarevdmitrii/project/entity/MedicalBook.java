@@ -1,6 +1,7 @@
 package ru.mirea.pisarevdmitrii.project.entity;
 
 import java.io.File;
+import java.util.Objects;
 
 public class MedicalBook {
     private long medicalBookId;
@@ -41,5 +42,28 @@ public class MedicalBook {
 
     public void setNotes(File notes) {
         this.notes = notes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MedicalBook that = (MedicalBook) o;
+        return patient.equals(that.patient) && Objects.equals(vaccinations, that.vaccinations) && Objects.equals(notes, that.notes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(patient, vaccinations, notes);
+    }
+
+    @Override
+    public String toString() {
+        return "MedicalBook{" +
+                "medicalBookId=" + medicalBookId +
+                ", patient=" + patient +
+                ", vaccinations=" + vaccinations +
+                ", notes=" + notes +
+                '}';
     }
 }

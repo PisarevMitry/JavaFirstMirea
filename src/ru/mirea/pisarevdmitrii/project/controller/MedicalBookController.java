@@ -16,23 +16,23 @@ public class MedicalBookController {
         return medicalBookService.getAllMedicalBook();
     }
 
-    public MedicalBook getMedicalBook(MedicalBook patient) {
-        return medicalBookService.getMedicalBook(patient);
+    public MedicalBook getMedicalBook(MedicalBook medicalBook, AccessType type) {
+        return new MedicalBookAccessControllerFactory().createFactory(medicalBookService.getMedicalBook(medicalBook), type);
     }
 
-    public MedicalBook getMedicalBook(Integer index) {
-        return medicalBookService.getMedicalBook(index);
+    public MedicalBook getMedicalBook(Integer index, AccessType type) {
+        return new MedicalBookAccessControllerFactory().createFactory(medicalBookService.getMedicalBook(index), type);
     }
 
-    public void postMedicalBook(MedicalBook patient) {
-        medicalBookService.postMedicalBook(patient);
+    public void postMedicalBook(MedicalBook medicalBook, AccessType type) {
+        medicalBookService.postMedicalBook(new MedicalBookAccessControllerFactory().createFactory(medicalBookService.getMedicalBook(medicalBook), type));
     }
 
-    public void removeMedicalBook(MedicalBook patient) {
-        medicalBookService.removeMedicalBook(patient);
+    public void removeMedicalBook(MedicalBook medicalBook, AccessType type) {
+        medicalBookService.removeMedicalBook(new MedicalBookAccessControllerFactory().createFactory(medicalBookService.getMedicalBook(medicalBook), type));
     }
 
-    public void updateMedicalBook(MedicalBook patient, MedicalBook patientNew) {
-        medicalBookService.updateMedicalBook(patient, patientNew);
+    public void updateMedicalBook(MedicalBook medicalBook, MedicalBook medicalBookNew, AccessType type) {
+        medicalBookService.updateMedicalBook(new MedicalBookAccessControllerFactory().createFactory(medicalBookService.getMedicalBook(medicalBook), type), new MedicalBookAccessControllerFactory().createFactory(medicalBookService.getMedicalBook(medicalBook), type));
     }
 }

@@ -3,10 +3,17 @@ package ru.mirea.pisarevdmitrii.project.entity;
 public class HealthService {
     private long healthServiceId;
     private String title;
-    private double price;
+    private int price;
     private MedicalSpecialization medicalSpecialization;
 
     public HealthService() {
+    }
+
+    public HealthService(long healthServiceId, String title, int price, MedicalSpecialization medicalSpecialization) {
+        this.healthServiceId = healthServiceId;
+        this.title = title;
+        this.price = price;
+        this.medicalSpecialization = medicalSpecialization;
     }
 
     public long getHealthServiceId() {
@@ -25,11 +32,11 @@ public class HealthService {
         this.title = title;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
