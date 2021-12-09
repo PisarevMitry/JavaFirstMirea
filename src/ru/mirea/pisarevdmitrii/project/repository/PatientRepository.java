@@ -29,7 +29,7 @@ public class PatientRepository extends DatabaseTable<Patient> {
         add(new Patient("Нешкумай", "Александра", "1234"));
         add(new Patient("Овчаренко", "Анастасия", "1234"));
         add(new Patient("Овчаренко", "Мария", "1234"));
-        add(new Patient("Писарев", "Дмитрий", "Вадимович"));
+        add(new Patient("Писарев", "Дмитрий", "Вадимович", "1234"));
         add(new Patient("Побережнюк ", "Никита", "1234"));
         add(new Patient("Семенов", "Дмитрий", "1234"));
         add(new Patient("Слотин", "Александр", "1234"));
